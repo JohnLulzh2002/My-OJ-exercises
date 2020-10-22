@@ -4,8 +4,7 @@ int main(){
 	for(scanf("%d",&n);n>0;n--){
 		scanf("%d%d",&a,&b);
 		if(a<b){c=a;a=b;b=c;}	//a>b
-		while(a%b){
-			c=a%b;
+		while(c=a%b){
 			if(c==0)break;
 			a=b;b=c;
 		}
