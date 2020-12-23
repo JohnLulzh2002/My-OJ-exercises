@@ -26,18 +26,14 @@ node* insert(node*p){
 		free(p->next);
 		p->next=NULL;
 	}
-	if(cmp(a[i],p->data)<0){
-		p->data=a[i];
-		p->pos=i;
-	}
 	if(cmp(a[i],p->data)>0){
 		p->next=malloc(Size);
 		p->next->last=p;
 		p=p->next;
-		p->data=a[i];
-		p->pos=i;
-		p->next=NULL;
 	}
+	p->data=a[i];
+	p->pos=i;
+	p->next=NULL;
 	return p;
 }
 node* delete(node*p){
@@ -55,36 +51,24 @@ int main(){
 
 	node *head,*tail;
 	tail=head=malloc(Size);
-	head->last=head->next=NULL;
-	head->pos=0;
-	head->data=a[0];
-	for(i=1;i<k;i++){
-		head=insert(head);
-	}
-	printf("%d",tail->data);
-	for(;i<n;i++){
-		head=insert(head);
-		tail=delete(tail);
-		printf(" %d",tail->data);
-	}
-	printf("\n");
-	while(head!=tail){
-		tail=tail->next;
-		free(tail->last);
-	}
-	
-	dir=1;//reverse
-	head->last=head->next=NULL;
-	head->pos=0;
-	head->data=a[0];
-	for(i=1;i<k;i++){
-		head=insert(head);
-	}
-	printf("%d",tail->data);
-	for(;i<n;i++){
-		head=insert(head);
-		tail=delete(tail);
-		printf(" %d",tail->data);
+	for(dir=0;dir<2;dir++){
+		head->last=head->next=NULL;
+		head->pos=0;
+		head->data=a[0];
+		for(i=1;i<k;i++){
+			head=insert(head);
+		}
+		printf("%d",tail->data);
+		for(;i<n;i++){
+			head=insert(head);
+			tail=delete(tail);
+			printf(" %d",tail->data);
+		}
+		printf("\n");
+		while(head!=tail){
+			tail=tail->next;
+			free(tail->last);
+		}
 	}
 	return 0;
 }
