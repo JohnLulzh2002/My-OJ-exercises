@@ -11,7 +11,7 @@ while 1:
     a=sorted([int(x) for x in input().split()])
     l=len(a)
     i=0
-    while(i<l-1):
+    while i<l-1:
         if a[i]==a[i+1]:
             del a[i]
             del a[i]

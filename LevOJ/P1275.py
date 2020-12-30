@@ -11,7 +11,7 @@ try:
         count=0
         m=1
         while m<n:
-            if(irreducible(n,m)):
+            if irreducible(n,m):
                 count+=1
             m+=1
         print(count)

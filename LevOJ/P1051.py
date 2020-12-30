@@ -12,7 +12,7 @@ while n:
     n-=1
     no=True
     a=int(input())
-    if(isPrime(a)):
+    if isPrime(a):
         r=0
         while a:
             r*=10
@@ -21,5 +21,5 @@ while n:
         if(isPrime(r)):
             print(1)
             no=False
-    if(no):
+    if no:
         print(0)
