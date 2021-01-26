@@ -81,7 +81,7 @@ int main(){
 
 ### C - Numerically Speaking
 
-总体上讲是10进制和26进制相互转换。但是麻烦的是：a看作0的话，aa,aaa之类的都是0，所以要把a看作1。这样一来，在进制转换时出现余数为0就应该改成余26，同时商减一。
+总体上讲是10进制和26进制相互转换。但是麻烦的是：a看作0的话，aa,aaa之类的都是0，所以要把a看作1，z看作26。这样一来，在进制转换时出现余数为0就应该改成余26(对应z)，同时商减一。
 
 ```c
 #include<stdio.h>
@@ -99,6 +99,7 @@ int div(int a[],int la,int s,int b,int c[],int*lc){
 	*lc=la;
 	return t;
 }
+//高精度减一，la位s进制高精度数a
 void minusOne(int a[],int*la,int s){
 	int i;
 	a[0]--;
@@ -154,6 +155,83 @@ int main(){
 }
 ```
 
+
+
+
+---
+
+### N - Number into Sequence
+
+只需排列成类似下图的顺序
+
+> $$
+> \begin{align}
+> &a\quad&&a\quad&&a\quad&&a\quad&&a\quad&a\\
+> &&&&&b\quad&&b\quad&&b\quad&b\\
+> &&&&&&&&&&c
+> \end{align}
+> $$
+
+```c
+#include<stdio.h>
+#define MAX 100001
+int main(){
+	long long prime[10000]={};
+	int primen=1;
+	{
+		int i,j;
+		char a[MAX]={};
+		for(i=2;i<MAX;i++){
+			if(!a[i])
+				prime[primen++]=i;
+			for(j=1;j<primen&&prime[j]*i<MAX;j++)
+				a[prime[j]*i]++;
+		}
+	}
+	int t;
+	scanf("%d",&t);
+	while(t--){
+		long long fact[30][2]={},i,n;
+		scanf("%lld",&n);
+		int j,factn=0;
+		for(i=1;i<primen && prime[i]<=n;i++){
+			int c=0;
+			while(!(n%prime[i])){
+				c++;
+				n/=prime[i];
+			}
+			if(c){
+				fact[factn][0]=prime[i];
+				fact[factn][1]=c;
+				factn++;
+			}
+		}
+		if(i==primen){
+			fact[factn][0]=n;
+			fact[factn++][1]=1;
+		}
+		long long max=0,maxi,max0;
+		for(i=0;i<factn;i++)
+			if(fact[i][1]>max){
+				max=fact[i][1];
+				maxi=i;
+				max0=fact[i][0];
+			}
+		printf("%d\n",max);
+		for(i=0;i<max;i++){
+			long long now=max0;
+			for(j=0;j<factn;j++){
+				if(j==maxi)continue;
+				if(i+fact[j][1]>=max)
+					now*=fact[j][0];
+			}
+			printf("%lld ",now);
+		}
+		printf("\n");
+	}
+	return 0;
+}
+```
 
 
 

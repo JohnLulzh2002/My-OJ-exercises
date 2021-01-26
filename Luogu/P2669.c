@@ -6,7 +6,7 @@ int main()
 	for(i=1;t==0;i++)
 		for(j=1;j<=i && t==0;j++){
 			d++;
-			if(d==n)    t=1;
+			if(d==n)	t=1;
 			sum+=i;
 		}
 	printf("%d",sum);
