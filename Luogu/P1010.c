@@ -38,10 +38,5 @@ int main(){
 	int n;
 	scanf("%d",&n);
 	calc(n);
-	// for(n=1;n<18;n++){
-	// 	printf("%d	",n);
-	// 	calc(n);
-	// 	printf("\n");
-	// }
 	return 0;
 }
