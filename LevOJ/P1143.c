@@ -49,7 +49,6 @@ int main(){
 				}
 			if(t)break;
 		}
-			
 	}
 	return 0;
 }
