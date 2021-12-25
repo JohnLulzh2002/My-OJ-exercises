@@ -1,0 +1,1 @@
+print('Cuius rei demonstrationem mirabilem sane detexi.Hanc marginis exiguitas non caperet.')
