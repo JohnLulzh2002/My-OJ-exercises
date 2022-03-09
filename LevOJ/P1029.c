@@ -26,20 +26,16 @@ void next(int x,int y){
 }
 int main(){
 	scanf("%d%d",&r,&c);
-	for(;i<r;i++){
-		for(j=0;j<c;j++)
-			scanf("%d",&map[i][j]);
-	}
+	for(;i<r;i++)for(j=0;j<c;j++)
+		scanf("%d",&map[i][j]);
 	for(;start<c*r;start++){
 		head=end=0;
-		for(i=0;i<r;i++){
-			for(j=0;j<c;j++)
-				max[i][j]=1;
-		}
+		for(i=0;i<r;i++)for(j=0;j<c;j++)
+			max[i][j]=1;
 		next(start/c,start%c);
 		while(head<end)
 			next(queue[head][0],queue[head][1]);
-		for(i=0;i<r;i++) for(j=0;j<c;j++)
+		for(i=0;i<r;i++)for(j=0;j<c;j++)
 			if(max[i][j]>ans)
 				ans=max[i][j];
 	}
