@@ -1,6 +1,7 @@
 from itertools import permutations
 from math import factorial
-def f(x)->int:
+
+def f(x)->int:#统计逆序对数量
     if len(x)==1:
         return 0
     a=x[:len(x)//2]
@@ -19,8 +20,8 @@ def ans(x):
 for n in range(1,10):
     s=[]
     for i in permutations(range(1,n+1),n):
-        # print(i,f(i))
         s.append(f(i))
+        # print(i,f(i))
     print(n,sum(s),ans(n))
     # if n>1:
     #     print(n,tuple(map(lambda x:s[x]-ls[x%len(ls)],range(len(s)))))
