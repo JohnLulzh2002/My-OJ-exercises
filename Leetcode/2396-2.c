@@ -1,0 +1,1 @@
+#define isStrictlyPalindromic(x) 0
