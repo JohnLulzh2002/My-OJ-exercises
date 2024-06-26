@@ -1,17 +1,15 @@
 class Solution{
 	int n,m;
-
+	vector<int> rs;
 public:
 	vector<int> goodSubsetofBinaryMatrix(vector<vector<int>>& grid){
 		m=grid.size();
 		n=grid[0].size();
-		array<int,5> p={ 1, 2, 4, 8, 16 };
-		vector<int> rs;
 		for(auto r:grid){
-			int s=0;
+			rs.push_back(0);
 			for(int i=0; i<n; i++)
-				s+=r[i]*p[i];
-			rs.push_back(s);
+				rs.back()|=r[i]<<i;
+			
 		}
 		for(int i=0; i<m; i++){
 			if(rs[i]==0)
